@@ -77,7 +77,10 @@ dependencies {
 
 1. Install [Android Studio Unit Test](https://github.com/evant/android-studio-unit-test-plugin) plugin to Android Studio under Preferences > Plugins. 
 
-3. You may need to restart Android Studio to allow the android studio unit test plugin to see src/test as a test directory. 
+3. You may need to restart Android Studio to allow the android studio unit test plugin to see src/test as a test directory.
+
+4. click 'Sync Project with Gradle Files'
+<img src="https://www.evernote.com/shard/s313/sh/75d04b22-0ef0-449e-b137-e65dd4948865/28376be9739b21ca941d8fb6a4eeda88/deep/0/README.md----MyApplication----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
 
 4. Write Robolectric Tests! For more intel on how to write tests using robolectric + fest, check out [blog.bignerdranch.com/2583-testing-the-android-way/](blog.bignerdranch.com/2583-testing-the-android-way/)
 
