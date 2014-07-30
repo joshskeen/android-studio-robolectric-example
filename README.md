@@ -7,10 +7,7 @@ Uses :
 - [Android Unit Test](https://github.com/JCAndKSolutions/android-unit-test)  
 - [Android Studio Unit Test](https://github.com/evant/android-studio-unit-test-plugin) 
 
-To run the tests from Android Studio rather than ``gradlew``, first install
-- Install [Android Studio Unit Test](https://github.com/evant/android-studio-unit-test-plugin) plugin to Android Studio under plugins:
-
-<img src="https://www.evernote.com/shard/s313/sh/fd96c364-d3f7-44bf-b47f-a92a120a2b31/05956583f739e98b5c3e40242bcae820/deep/0/Preferences-and-TestMyActivity.java----app----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
+Both will need to be installed (see instructions below).
 
 ### To set up from a new Android Studio Project: 
 
@@ -26,6 +23,7 @@ buildscript {
         classpath 'com.github.jcandksolutions.gradle:android-unit-test:+'
     }
 }
+
 
 allprojects {
     repositories {
@@ -75,12 +73,14 @@ dependencies {
 
 2. Create directories matching src/test/java/ and add a package matching your project's packagename. eg src/test/java/com.joshskeen.foobar
 
-1. Install [Android Studio Unit Test](https://github.com/evant/android-studio-unit-test-plugin) plugin to Android Studio under Preferences > Plugins. 
+1. Install [Android Studio Unit Test](https://github.com/evant/android-studio-unit-test-plugin) plugin to Android Studio under Preferences > Plugins.
+ <img src="https://www.evernote.com/shard/s313/sh/fd96c364-d3f7-44bf-b47f-a92a120a2b31/05956583f739e98b5c3e40242bcae820/deep/0/Preferences-and-TestMyActivity.java----app----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
+
 
 3. You may need to restart Android Studio to allow the android studio unit test plugin to see src/test as a test directory.
 
 4. click 'Sync Project with Gradle Files'
-<img src="https://www.evernote.com/shard/s313/sh/75d04b22-0ef0-449e-b137-e65dd4948865/28376be9739b21ca941d8fb6a4eeda88/deep/0/README.md----MyApplication----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
+ <img src="https://www.evernote.com/shard/s313/sh/75d04b22-0ef0-449e-b137-e65dd4948865/28376be9739b21ca941d8fb6a4eeda88/deep/0/README.md----MyApplication----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
 
 4. Write Robolectric Tests! For more intel on how to write tests using robolectric + fest, check out [blog.bignerdranch.com/2583-testing-the-android-way/](blog.bignerdranch.com/2583-testing-the-android-way/)
 
