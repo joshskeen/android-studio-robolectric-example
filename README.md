@@ -72,6 +72,7 @@ dependencies {
 
 
 2. Create directories matching src/test/java/ and add a package matching your project's packagename. eg src/test/java/com.joshskeen.foobar
+ <img src="https://www.evernote.com/shard/s313/sh/d69d9f94-76cb-42ac-858f-b6f7da68a6fb/f8d5f3ca3223094317d895c78cae5103/deep/0/TestMyActivity.java----app----android-studio-robolectric-example------code-foo-bar-android-studio-robolectric-example----Android-Studio-(Beta)-0.8.4.png" width="600">
 
 1. Install [Android Studio Unit Test](https://github.com/evant/android-studio-unit-test-plugin) plugin to Android Studio under Preferences > Plugins.
  <img src="https://www.evernote.com/shard/s313/sh/fd96c364-d3f7-44bf-b47f-a92a120a2b31/05956583f739e98b5c3e40242bcae820/deep/0/Preferences-and-TestMyActivity.java----app----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
