@@ -11,7 +11,7 @@ import static org.fest.assertions.api.ANDROID.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(emulateSdk = 18)    //robolectric doesn't currently support api 19 - emulate api 18
-public class TestMyActivity {
+public class MyActivityTest {
 
     private MyActivity mActivity;
 
