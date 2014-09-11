@@ -21,6 +21,9 @@ android {
         // this sets the root test folder to src/test overriding the default src/instrumentTest
         instrumentTest.setRoot('src/test')
     }
+//workaround for android studio .89 - see https://github.com/evant/android-studio-unit-test-plugin/issues/17
+afterEvaluate {
+    tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
 }
 
 apply plugin: 'android-unit-test'
@@ -28,7 +31,7 @@ apply plugin: 'android-unit-test'
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile 'org.easytesting:fest:1.0.16'
-    testCompile 'junit:junit:4.+'
+    testCompile 'junit:junit:4.10'
     testCompile 'org.robolectric:robolectric:2.3'
     testCompile 'com.squareup:fest-android:1.0.8'
 }
