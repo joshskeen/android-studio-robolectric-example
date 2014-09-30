@@ -1,3 +1,5 @@
+![build status](https://travis-ci.org/mutexkid/android-studio-robolectric-example.svg)
+
 ## Android Studio Robolectric Test Example
 --- 
 This example project shows how to use robolectric, junit and fest with gradle-based Android Studio projects (as of Android Studio 0.8.1). Examine the top-level build.gradle and app/build.gradle files for a new project configuration gradle boilerplate. 
