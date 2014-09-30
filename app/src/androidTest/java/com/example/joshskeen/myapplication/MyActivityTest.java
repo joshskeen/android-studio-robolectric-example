@@ -33,3 +33,5 @@ public class MyActivityTest {
         assertThat(mActivity.mHelloWorldTextView).hasText("HEY WORLD");
     }
 }
+
+
