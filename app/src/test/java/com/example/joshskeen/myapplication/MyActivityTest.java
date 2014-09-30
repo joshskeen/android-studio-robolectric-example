@@ -10,7 +10,11 @@ import org.robolectric.annotation.Config;
 import static org.fest.assertions.api.ANDROID.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = 18)    //robolectric doesn't currently support api 19 - emulate api 18
+//robolectric doesn't currently support api 19 - emulate api 18
+//the manifest= statement can be avoided by setting the working directory in the junit configuration on the project
+//we set it here because the project contains no .iml files to configure the working directory for tests.
+@Config(manifest="app/src/main/AndroidManifest.xml", emulateSdk = 18)
+
 public class MyActivityTest {
 
     private MyActivity mActivity;
@@ -33,5 +37,3 @@ public class MyActivityTest {
         assertThat(mActivity.mHelloWorldTextView).hasText("HEY WORLD");
     }
 }
-
-
