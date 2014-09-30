@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 20
+    buildToolsVersion '20.0.0'
 
     defaultConfig {
         applicationId "com.example.joshskeen.myapplication"
@@ -22,16 +21,19 @@ android {
         instrumentTest.setRoot('src/test')
     }
 //workaround for android studio .89 - see https://github.com/evant/android-studio-unit-test-plugin/issues/17
-afterEvaluate {
-    tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
+    afterEvaluate {
+        tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
+    }
+
+    apply plugin: 'android-unit-test'
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        androidTestCompile 'org.easytesting:fest:1.0.16'
+        testCompile 'junit:junit:4.10'
+        testCompile 'org.robolectric:robolectric:2.3'
+        testCompile 'com.squareup:fest-android:1.0.8'
+    }
 }
-
-apply plugin: 'android-unit-test'
-
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile 'org.easytesting:fest:1.0.16'
-    testCompile 'junit:junit:4.10'
-    testCompile 'org.robolectric:robolectric:2.3'
-    testCompile 'com.squareup:fest-android:1.0.8'
 }
