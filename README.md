@@ -21,8 +21,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
-        classpath 'com.github.jcandksolutions.gradle:android-unit-test:+'
+        classpath 'com.android.tools.build:gradle:1.0.0'
+    	classpath 'com.github.jcandksolutions.gradle:android-unit-test:2.1.1'
     }
 }
 
@@ -40,24 +40,21 @@ your app/build.gradle file should look like this:
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 21
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         applicationId "com.example.joshskeen.myapplication"
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    sourceSets {
-        instrumentTest.setRoot('src/test')
     }
 }
 
@@ -65,7 +62,7 @@ apply plugin: 'android-unit-test'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile 'org.easytesting:fest:1.0.16'
+    testCompile 'org.easytesting:fest:1.0.16'
     testCompile 'junit:junit:4.+'
     testCompile 'org.robolectric:robolectric:2.3'
     testCompile 'com.squareup:fest-android:1.0.8'

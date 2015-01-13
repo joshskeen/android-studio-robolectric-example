@@ -11,9 +11,7 @@ import static org.fest.assertions.api.ANDROID.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 //robolectric doesn't currently support api 19 - emulate api 18
-//the manifest= statement can be avoided by setting the working directory in the junit configuration on the project
-//we set it here because the project contains no .iml files to configure the working directory for tests.
-@Config(manifest="./src/main/AndroidManifest.xml", emulateSdk = 18)
+@Config(emulateSdk = 18)
 
 public class MyActivityTest {
 
