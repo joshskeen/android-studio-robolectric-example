@@ -76,7 +76,7 @@ dependencies {
  <img src="https://www.evernote.com/shard/s313/sh/560c4b5f-e70b-4800-b46f-bc1968618338/89c1e740e7134316961a103021daf1cb/deep/0/MyActivityTest.java---android-studio-robolectric-example------code-android-studio-robolectric-example-.png" width="600">
  
 
-5. ctrl-click on the test and select Run > MyActivityTest. Make sure you select "Gradle" test (rather than unit), indicated by the gradle icon as seen here: <img
+5. ctrl + click on the test and select Run > MyActivityTest. Make sure you select "Gradle" test (rather than unit), indicated by the gradle icon as seen here: <img
  src="https://www.evernote.com/shard/s313/sh/47697c52-1e33-4983-8ddd-65a3e69334c9/85c63c5315f32066f6bf5a2da55eacc4/deep/0/MyActivityTest.java---android-studio-robolectric-example------code-android-studio-robolectric-example-.png" width="600">
 
 
