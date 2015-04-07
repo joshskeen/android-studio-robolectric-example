@@ -2,7 +2,8 @@
 
 ## Android Studio Robolectric Test Example
 --- 
-This example project shows how to use robolectric, junit and assertJ with gradle-based Android Studio projects (as of Android Studio 1.2). Examine the top-level build.gradle and app/build.gradle files for a new project configuration gradle boilerplate. 
+This example project shows how to use robolectric, junit and assertJ with your gradle-based Android Studio projects.
+Examine the top-level build.gradle and app/build.gradle files for a new project configuration gradle boilerplate.
 
 Make sure you're running the most recent version of Android Studio from the Canary Channel for this to work correctly (1.2 Beta as of today).
 
