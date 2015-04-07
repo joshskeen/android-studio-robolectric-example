@@ -4,15 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
 
-@RunWith(RobolectricTestRunner.class)
-//robolectric doesn't currently support api 19 - emulate api 18
-@Config(emulateSdk = 18)
-
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, emulateSdk = 21)
 public class MyActivityTest {
 
     private MyActivity mActivity;

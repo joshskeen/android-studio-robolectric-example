@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 21
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.example.joshskeen.myapplication"
-        minSdkVersion 14
-        targetSdkVersion 21
+        minSdkVersion 16
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -17,14 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
-    apply plugin: 'android-unit-test'
-
-    dependencies {
-        compile fileTree(dir: 'libs', include: ['*.jar'])
-        testCompile 'org.easytesting:fest:1.0.16'
-        testCompile 'junit:junit:4.10'
-        testCompile 'org.robolectric:robolectric:2.4'
-        testCompile 'com.squareup:fest-android:1.0.8'
-    }
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.easytesting:fest:1.0.16'
+    testCompile 'com.squareup:fest-android:1.0.8'
+    testCompile 'org.robolectric:robolectric:3.0-rc2'
 }
