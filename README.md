@@ -77,7 +77,7 @@ dependencies {
  
 
 5. ctrl + click on the test and select Run > MyActivityTest. Make sure you select "Gradle" test (rather than unit), indicated by the gradle icon as seen here: <img
- src="https://www.evernote.com/shard/s313/sh/47697c52-1e33-4983-8ddd-65a3e69334c9/85c63c5315f32066f6bf5a2da55eacc4/deep/0/MyActivityTest.java---android-studio-robolectric-example------code-android-studio-robolectric-example-.png" width="600">
+ src="https://www.evernote.com/shard/s313/sh/86389266-daed-4cce-a363-3c16ffc121b2/f33e967214e3177383b9874cd60c3d86/deep/0/Screenshot-4-7-15,-1-46-PM.png" width="600">
 
 
 4. Write Robolectric Tests! For more intel on how to write tests using robolectric + fest, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
