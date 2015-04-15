@@ -36,12 +36,21 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+
     defaultConfig {
         applicationId "com.example.joshskeen.myapplication"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -61,6 +70,20 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
+
+    androidTestCompile('junit:junit:4.11') {
+        exclude module: 'hamcrest-core'
+        //disabling all transitive dependencies of this dependency
+        transitive = false
+    }
+
+    androidTestCompile ('com.android.support.test.espresso:espresso-core:2.0') {
+        exclude module: 'junit-dep'
+    }
+
+    androidTestCompile ('com.android.support.test:testing-support-lib:0.1') {
+        exclude module: 'junit-dep'
+    }
 }
 ```
 
@@ -70,7 +93,6 @@ dependencies {
 
 4. click 'Sync Project with Gradle Files'
  <img src="https://www.evernote.com/shard/s313/sh/75d04b22-0ef0-449e-b137-e65dd4948865/28376be9739b21ca941d8fb6a4eeda88/deep/0/README.md----MyApplication----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
-
 
  
 5. Select "Unit Tests" under "Build Variants"
@@ -82,5 +104,26 @@ dependencies {
 
 
 4. Write Robolectric Tests! For more intel on how to write tests using robolectric + fest, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
+
+
+**Espresso tests**
+
+1. Create directories matching src/androidTest/java/ and add a package matching your project's packagename. eg src/test/java/com.example.joshskeen.myapplication
+
+1. Click 'Sync Project with Gradle Files'
+<img src="https://www.evernote.com/shard/s313/sh/75d04b22-0ef0-449e-b137-e65dd4948865/28376be9739b21ca941d8fb6a4eeda88/deep/0/README.md----MyApplication----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
+
+1. Select "Android Instrumentation Tests" under "Build Variants"
+<img src="http://ibin.co/1yLu696iHgyv" />
+
+1. Edit the "Defaults" > "Android Tests" default configuration by selecting "Edit configurations..." from the "Select Run/Debug Configurations" chooser and selecting the configuration shown below.
+ <img src="http://ibin.co/1yLvA1Xm3aEc" />
+
+1. Choose your main application module for "Module" (in this case, "app").  See the image above.
+
+1. Click the "..." button to the right of the "Specific instrumentation runner (optional)" control.  Choose "android.support.test.runner.AndroidJUnitRunner".  See the image above.
+
+1. Make sure you "Apply" to save the changes and then you can close the dialog and ctrl + click on the MyActivityEspressoTest file in the Project pane and select Run > MyActivityEspressoTest.  Make sure you select the "Android Tests" version rather than the "Gradle" or "JUnit" options as seen here:
+<img src="http://ibin.co/1yM94zj3Rst9" />
 
 
