@@ -16,6 +16,23 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+
+    productFlavors {
+        dev {
+            applicationId "com.example.joshskeen.myapplication.dev"
+        }
+        qa {
+            applicationId "com.example.joshskeen.myapplication.qa"
+        }
+        stg {
+            applicationId "com.example.joshskeen.myapplication.stg"
+        }
+        rls {
+        }
     }
 }
 
