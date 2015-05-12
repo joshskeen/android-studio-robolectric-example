@@ -8,6 +8,8 @@ import org.robolectric.res.FileFsFile;
 import org.robolectric.util.Logger;
 import org.robolectric.util.ReflectionHelpers;
 
+import java.util.Properties;
+
 /**
  * Test runner customized for running unit tests either through the Gradle CLI or
  * Android Studio. The runner uses the build type and build flavor to compute the
@@ -21,6 +23,9 @@ public class MyCustomGradleTestRunner extends RobolectricTestRunner {
 
     public MyCustomGradleTestRunner(Class<?> klass) throws InitializationError {
         super(klass);
+
+        Properties props = System.getProperties();
+        props.setProperty("robolectric.logging.enabled", "true");
     }
 
     @Override
@@ -47,10 +52,11 @@ public class MyCustomGradleTestRunner extends RobolectricTestRunner {
         }
 
         Logger.debug("Robolectric assets directory: " + assets.getPath());
-        Logger.debug("   Robolectric res directory: " + res.getPath());
-        Logger.debug("   Robolectric manifest path: " + manifest.getPath());
-        Logger.debug("    Robolectric application name: " + applicationId);
-        return new AndroidManifest(manifest, res, assets, "com.example.joshskeen.myapplication");
+        Logger.debug("Robolectric res directory: " + res.getPath());
+        Logger.debug("Robolectric manifest path: " + manifest.getPath());
+        Logger.debug("Robolectric application name: " + applicationId);
+        return new MyCustomAndroidManifest(manifest, res, assets, applicationId);
+//        return new MyCustomAndroidManifest(manifest, res, assets, "com.example.joshskeen.myapplication");
     }
 
     private String getType(Config config) {
