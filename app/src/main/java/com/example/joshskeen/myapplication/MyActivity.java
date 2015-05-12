@@ -31,7 +31,6 @@ public class MyActivity extends Activity {
         });
 
         mBuildConfigTextView = (TextView) findViewById(R.id.buildConfigTextView);
-        // ignore missing BuildConfig warning
 
         String buildType;
         if (BuildConfig.DEBUG)  {
@@ -46,7 +45,7 @@ public class MyActivity extends Activity {
         String flavor = "product flavor: " + AppConstants.FLAVOR;
         mProductFlavorTextView.setText(flavor);
 
-        // it should be noted that the API is not updated to reflect the split between applicationId and PackageName
+        // It should be noted that the API is not updated to reflect the split between applicationId and PackageName
         // http://tools.android.com/tech-docs/new-build-system/applicationid-vs-packagename
         // so the method getPackageName() is a bit misleading. Its technically getApplicationId()
         mApplicationIdTextView = (TextView) findViewById(R.id.applicationIdTextView);

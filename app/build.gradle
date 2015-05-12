@@ -22,16 +22,11 @@ android {
     }
 
     productFlavors {
-        dev {
-            applicationId "com.example.joshskeen.myapplication.dev"
+        free {
+            applicationId "com.example.joshskeen.myapplication.free"
         }
-        qa {
-            applicationId "com.example.joshskeen.myapplication.qa"
-        }
-        stg {
-            applicationId "com.example.joshskeen.myapplication.stg"
-        }
-        rls {
+        paid {
+            applicationId "com.example.joshskeen.myapplication.paid"
         }
     }
 }
