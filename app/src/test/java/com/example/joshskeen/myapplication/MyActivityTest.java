@@ -1,17 +1,20 @@
 package com.example.joshskeen.myapplication;
 
+import android.util.Log;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
 
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, emulateSdk = 21)
+@RunWith(MyCustomGradleTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21)
 public class MyActivityTest {
+
+    private static final String TAG = MyActivityTest.class.getSimpleName();
 
     private MyActivity mActivity;
 
@@ -31,5 +34,21 @@ public class MyActivityTest {
         assertThat(mActivity.mHelloWorldTextView).hasText("Hello world!");
         mActivity.mClickMeButton.performClick();
         assertThat(mActivity.mHelloWorldTextView).hasText("HEY WORLD");
+    }
+
+    @Test
+    public void testBuildConfig() throws Exception {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "testing debug build config");
+            assertThat(mActivity.mBuildConfigTextView).hasText("build type: debug");
+        } else {
+            Log.d(TAG, "testing release build config");
+            assertThat(mActivity.mBuildConfigTextView).hasText("build type: release");
+        }
+    }
+
+    @Test
+    public void testProductFlavor() throws Exception {
+
     }
 }
