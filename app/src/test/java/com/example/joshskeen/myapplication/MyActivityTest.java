@@ -11,7 +11,7 @@ import org.robolectric.annotation.Config;
 import static org.fest.assertions.api.ANDROID.assertThat;
 
 @RunWith(MyCustomGradleTestRunner.class)
-@Config(constants = BuildConfig.class, emulateSdk = 21)
+@Config(constants = BuildConfig.class, sdk = 21)
 public class MyActivityTest {
 
     private static final String TAG = MyActivityTest.class.getSimpleName();

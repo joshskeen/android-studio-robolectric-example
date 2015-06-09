@@ -15,7 +15,7 @@ public class MyCustomAndroidManifest extends AndroidManifest {
 
     @Override
     public Class getRClass() {
-        Logger.debug("using my custon getRClass() method");
+        Logger.debug("using my custom getRClass() method");
         try {
             String rClassName = getRClassName();
             return Class.forName(rClassName);

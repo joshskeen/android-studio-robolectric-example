@@ -56,7 +56,7 @@ public class MyCustomGradleTestRunner extends RobolectricTestRunner {
         Logger.debug("Robolectric manifest path: " + manifest.getPath());
         Logger.debug("Robolectric application name: " + applicationId);
         return new MyCustomAndroidManifest(manifest, res, assets, applicationId);
-//        return new MyCustomAndroidManifest(manifest, res, assets, "com.example.joshskeen.myapplication");
+//        return new AndroidManifest(manifest, res, assets, "com.example.joshskeen.myapplication");
     }
 
     private String getType(Config config) {
