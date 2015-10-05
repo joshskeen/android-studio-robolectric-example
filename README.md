@@ -9,37 +9,18 @@ Make sure you're running the most recent version of Android Studio from the Cana
 
 ### To set up from a new Android Studio Project: 
 
-your top-level build.gradle file should look like this: 
-
-```javascript
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.0'
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-```
-
-your app/build.gradle file should look like this: 
+Add test dependencies on assertj-android and Robolectric to your module's build.gradle file. Your app module's app/build.gradle file would look something like this:
 
 ```javascript
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.example.joshskeen.myapplication"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -60,23 +41,51 @@ dependencies {
 }
 ```
 
-2. Create directories matching src/test/java/ and add a package matching your project's packagename. eg src/test/java/com.example.joshskeen.myapplication
+2. If they don't already exist, create directories matching src/test/java/ and add a package matching your project's packagename. E.g. src/test/java/com.example.joshskeen.myapplication
  <img src="https://www.evernote.com/shard/s313/sh/d69d9f94-76cb-42ac-858f-b6f7da68a6fb/f8d5f3ca3223094317d895c78cae5103/deep/0/TestMyActivity.java----app----android-studio-robolectric-example------code-foo-bar-android-studio-robolectric-example----Android-Studio-(Beta)-0.8.4.png" width="600">
 
 
-4. click 'Sync Project with Gradle Files'
+4. Sync your gradle file by clicking 'Sync Project with Gradle Files'
  <img src="https://www.evernote.com/shard/s313/sh/75d04b22-0ef0-449e-b137-e65dd4948865/28376be9739b21ca941d8fb6a4eeda88/deep/0/README.md----MyApplication----My-Application------AndroidStudioProjects-MyApplication----Android-Studio-(Beta)-0.8.1.png" width="600">
 
 
  
 5. Select "Unit Tests" under "Build Variants"
  <img src="https://www.evernote.com/shard/s313/sh/560c4b5f-e70b-4800-b46f-bc1968618338/89c1e740e7134316961a103021daf1cb/deep/0/MyActivityTest.java---android-studio-robolectric-example------code-android-studio-robolectric-example-.png" width="600">
- 
 
-5. ctrl + click on the test and select Run > MyActivityTest. Make sure you select "Gradle" test (rather than unit), indicated by the gradle icon as seen here: <img
+6. Create your unit test in src/test/java/com.example.joshskeen.myapplication/MyActivityTest.java:
+ ```java
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21)
+public class MyActivityTest {
+
+    private MyActivity mActivity;
+
+    @Before
+    public void setup() {
+        mActivity = Robolectric.buildActivity(MyActivity.class).create().get();
+    }
+
+    @Test
+    public void myActivityAppearsAsExpectedInitially() {
+        assertThat(mActivity.mClickMeButton).hasText("Click me!");
+        assertThat(mActivity.mHelloWorldTextView).hasText("Hello world!");
+    }
+
+    @Test
+    public void clickingClickMeButtonChangesHelloWorldText() {
+        assertThat(mActivity.mHelloWorldTextView).hasText("Hello world!");
+        mActivity.mClickMeButton.performClick();
+        assertThat(mActivity.mHelloWorldTextView).hasText("HEY WORLD");
+    }
+
+}
+```
+
+7. Ctrl + click (or right-click) on the test and select Run > MyActivityTest. Make sure you select "Gradle" test (rather than unit), indicated by the gradle icon as seen here: <img
  src="https://www.evernote.com/shard/s313/sh/86389266-daed-4cce-a363-3c16ffc121b2/f33e967214e3177383b9874cd60c3d86/deep/0/Screenshot-4-7-15,-1-46-PM.png" width="600">
 
 
-4. Write Robolectric Tests! For more intel on how to write tests using robolectric + assertJ, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
+8. Write Robolectric Tests! For more intel on how to write tests using robolectric + assertJ, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
 
 
