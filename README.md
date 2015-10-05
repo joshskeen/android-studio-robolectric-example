@@ -55,12 +55,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    testCompile 'org.easytesting:fest:1.0.16'
-    testCompile 'com.squareup:fest-android:1.0.8'
-    testCompile('org.robolectric:robolectric:3.0-rc2') {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
+    testCompile 'com.squareup.assertj:assertj-android:1.1.0'
+    testCompile 'org.robolectric:robolectric:3.0'
 }
 ```
 
@@ -81,6 +77,6 @@ dependencies {
  src="https://www.evernote.com/shard/s313/sh/86389266-daed-4cce-a363-3c16ffc121b2/f33e967214e3177383b9874cd60c3d86/deep/0/Screenshot-4-7-15,-1-46-PM.png" width="600">
 
 
-4. Write Robolectric Tests! For more intel on how to write tests using robolectric + fest, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
+4. Write Robolectric Tests! For more intel on how to write tests using robolectric + assertJ, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
 
 
