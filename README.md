@@ -85,6 +85,6 @@ public class MyActivityTest {
 }
 ```
 
-7. Write Robolectric Tests! For more intel on how to write tests using robolectric + assertJ, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
+Now write Robolectric tests! For more intel on how to write tests using robolectric + assertJ, check out [http://blog.bignerdranch.com/2583-testing-the-android-way/](http://blog.bignerdranch.com/2583-testing-the-android-way/)
 
 
