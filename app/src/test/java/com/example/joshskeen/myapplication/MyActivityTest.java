@@ -7,10 +7,11 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.fest.assertions.api.ANDROID.assertThat;
+import static org.assertj.android.api.Assertions.assertThat;
+
 
 @RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, emulateSdk = 21)
+@Config(constants = BuildConfig.class, sdk = 21)
 public class MyActivityTest {
 
     private MyActivity mActivity;
@@ -32,4 +33,5 @@ public class MyActivityTest {
         mActivity.mClickMeButton.performClick();
         assertThat(mActivity.mHelloWorldTextView).hasText("HEY WORLD");
     }
+
 }
