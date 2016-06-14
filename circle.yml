@@ -1,3 +1,7 @@
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "tools"
+    - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.3"
 test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
