@@ -12,23 +12,27 @@ import static org.assertj.android.api.Assertions.assertThat;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
-public class MyActivityTest {
+public class MyActivityUnitTest
+{
 
     private MyActivity mActivity;
 
     @Before
-    public void setup() {
+    public void setup()
+    {
         mActivity = Robolectric.buildActivity(MyActivity.class).create().get();
     }
 
     @Test
-    public void myActivityAppearsAsExpectedInitially() {
+    public void roboElectricMyActivityAppearsAsExpectedInitially()
+    {
         assertThat(mActivity.mClickMeButton).hasText("Click me!");
         assertThat(mActivity.mHelloWorldTextView).hasText("Hello world!");
     }
 
     @Test
-    public void clickingClickMeButtonChangesHelloWorldText() {
+    public void roboElectricClickingClickMeButtonChangesHelloWorldText()
+    {
         assertThat(mActivity.mHelloWorldTextView).hasText("Hello world!");
         mActivity.mClickMeButton.performClick();
         assertThat(mActivity.mHelloWorldTextView).hasText("HEY WORLD");
