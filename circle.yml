@@ -11,9 +11,10 @@ test:
     # wait for it to have booted
     - circle-android wait-for-boot
     # unlock the device
+    - sleep 30
     - adb shell input keyevent 82
     # run tests  against the emulator.
-    - ./gradlew connectedAndroidTest
+    - ./gradlew connectedAndroidTest -PdisablePreDex
     # copy the build outputs to artifacts
     - cp -r app/build/outputs $CIRCLE_ARTIFACTS
     # copy the test results to the test results directory.
