@@ -24,15 +24,8 @@ test:
           # start at background to use wiremock in next build steps
           background: true
 
-    # Execute Component Tests
-    - ./gradlew appCt:test
-
     # Check lint hints
     - ./gradlew app:lint
-
-    # Build instrumented test code
-    # fix apk not build https://code.google.com/p/android/issues/detail?id=180689
-    - ./gradlew appIt:assembleDebug
 
     # ensure that the emulator is ready to use
     - circle-android wait-for-boot
@@ -52,7 +45,7 @@ test:
     # Create coverage report
     - ./gradlew jacocoTestReport
 
-  post:
+	post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find */build/test-results/debug/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     - find */build/reports/jacoco/test/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
