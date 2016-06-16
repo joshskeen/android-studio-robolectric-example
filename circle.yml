@@ -31,6 +31,9 @@ test:
     # at least remove the look screen
     - adb shell input keyevent 82
 
+    # install the app
+    - ./gradlew installDebug
+
     # later we collect the logs from test run
     - adb logcat -d
 
@@ -42,6 +45,7 @@ test:
 
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find */build/outputs/androidTest-results/connected/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     - find */build/test-results/debug/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     - find */build/reports/jacoco/test/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 
