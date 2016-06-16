@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: '../jacoco.gradle'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -14,6 +15,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFile 'proguard-rules.txt'
+            debuggable true
+            testCoverageEnabled = true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
