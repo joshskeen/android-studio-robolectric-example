@@ -21,4 +21,4 @@ test:
     - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - find . -type f -regex ".*/build/test-results/release/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
