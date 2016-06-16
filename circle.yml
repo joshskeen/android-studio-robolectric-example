@@ -45,7 +45,7 @@ test:
     # Create coverage report
     - ./gradlew jacocoTestReport
 
-	post:
+  post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find */build/test-results/debug/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     - find */build/reports/jacoco/test/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
