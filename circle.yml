@@ -52,8 +52,6 @@ test:
     # Create coverage report
     - ./gradlew jacocoTestReport
 
-        # copy the test results to the test results directory.
-        - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find */build/test-results/debug/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
