@@ -1,4 +1,8 @@
 ## Customized dependencies
+machine:
+  environment:
+    #auth for the coveralls report
+    COVERALLS_REPO_TOKEN: djVcsvXtxRaWUw5qYxwrytFmjQ6OmWjjT
 dependencies:
   pre:
     - ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk --no-ui --all --filter "tools,platform-tools,android-23,extra-google-m2repository,extra-android-m2repository,extra-android-support"
@@ -8,20 +12,58 @@ test:
     - emulator -avd circleci-android22 -no-audio -no-window:
         background: true
         parallel: true
-    # wait for it to have booted
-    - circle-android wait-for-boot
-    # unlock the device
-    - sleep 30
-    - adb shell input keyevent 82
-    # run tests  against the emulator.
-    - ./gradlew connectedAndroidTest -PdisablePreDex
-    # copy the build outputs to artifacts
-    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-    # copy the test results to the test results directory.
-    - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
   override:
-    - ./gradlew testDebugUnitTestCoverage
+    # Build the code
+    - ./gradlew app:assembleDebug
+
+    # Execute Unit Tests
+    - ./gradlew app:test
+
+    # start wiremock to support tests with network communication
+    - tools/src/main/resources/start-wiremock.sh:
+          # start at background to use wiremock in next build steps
+          background: true
+
+    # Execute Component Tests
+    - ./gradlew appCt:test
+
+    # Check lint hints
+    - ./gradlew app:lint
+
+    # Build instrumented test code
+    # fix apk not build https://code.google.com/p/android/issues/detail?id=180689
+    - ./gradlew appIt:assembleDebug
+
+    # ensure that the emulator is ready to use
+    - circle-android wait-for-boot
+    # the necessary sleep duration may change with time and depends on the pre tasks length.
+    # When all pre tasks are run long enough then waiting will not be necessary anymore.
+    # This sleep should avoid the com.android.builder.testing.api.DeviceException: com.android.ddmlib.ShellCommandUnresponsiveException
+    - sleep 60
+    # at least remove the look screen
+    - adb shell input keyevent 82
+
+    # later we collect the logs from test run
+    - adb logcat -d
+
+    # execute tests on emulator
+    - ./gradlew connectedAndroidTest -PdisablePreDex
+
+    # Create coverage report
+    - ./gradlew jacocoTestReport
+
+        # copy the test results to the test results directory.
+        - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/build/test-results/debug/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-    - find . -type f -regex ".*/build/reports/jacoco/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - find */build/test-results/debug/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - find */build/reports/jacoco/test/ -name "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+
+# Only executed if all tasks are successful
+deployment:
+
+  # report coverage to coveralls
+  coverage:
+    branch: [master, rewrite]
+    commands:
+    - ./gradlew coveralls

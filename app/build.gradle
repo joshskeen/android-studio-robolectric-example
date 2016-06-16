@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply from: '../jacoco.gradle'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -27,6 +26,9 @@ android {
         }
     }
 }
+
+// support code coverage for the unit tests
+apply from: '../build.jacoco-test-report.gradle'
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
