@@ -9,9 +9,9 @@ import android.widget.TextView;
 public class MyActivity extends Activity
 {
 
-    private Button mClickMeButton;
-    private Button mClickMeButton2;
-    private TextView mHelloWorldTextView;
+    Button mClickMeButton;
+    Button mClickMeButton2;
+    TextView mHelloWorldTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
