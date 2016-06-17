@@ -5,5 +5,5 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="click_me">Click me!</string>
-
+    <string name="click_me_2">Click me 2!</string>
 </resources>

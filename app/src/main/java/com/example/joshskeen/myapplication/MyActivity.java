@@ -9,8 +9,9 @@ import android.widget.TextView;
 public class MyActivity extends Activity
 {
 
-    Button mClickMeButton;
-    TextView mHelloWorldTextView;
+    private Button mClickMeButton;
+    private Button mClickMeButton2;
+    private TextView mHelloWorldTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,6 +26,15 @@ public class MyActivity extends Activity
             public void onClick(View v)
             {
                 mHelloWorldTextView.setText("HEY WORLD");
+            }
+        });
+        mClickMeButton2 = (Button) findViewById(R.id.clickMeBtn2);
+        mClickMeButton2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mHelloWorldTextView.setText("HEY WORLD 2");
             }
         });
     }
